@@ -1,3 +1,13 @@
 {
-    "hello": "Salom"
+    "hello": "Salom",
+    "home" : "Asosiy",
+    "tavar" : "Mahsulot",
+    "Biz" : "Biz haqimizda",
+    "Mahsulot" : "Mahsulot haqida",
+    "dastav": "Yetkazib berish va tolov",
+    "olcha" : "O’lchamlar jadvali",
+    "Ism": "Ism va raqam yozish",
+    "mijoz": "Mijozlarimiz fikrlari ",
+    "kantakt": "Contact",
+    "kashlok": "Mening savat"
 }
