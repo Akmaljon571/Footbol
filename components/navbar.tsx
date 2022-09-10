@@ -6,21 +6,23 @@ import uzb from "../public/uzb.png";
 import ru from "../public/ru.svg";
 import eng from "../public/eng.png";
 import shop from "../public/ShoppingBag.svg";
-import Link from "next/link";
+// import Link from "next/link";
+// import Link from "react";
 import useTrans from 'next-translate/useTranslation';
 
 
 export default function Navbar() {
     const { t: i18n } = useTrans();
-    let ozbek
-    if (i18n('lang:hello') === "Salom") {
-         ozbek = "uz"
-    } else if (i18n('lang:hello') === "Привет!") {
-         ozbek = "ru"
-    }
-    const [tillar, setTillar] = useState(ozbek || "uz");
+    // let ozbek
+    // if (i18n('lang:hello') === "Salom") {
+    //      ozbek = "uz"
+    // } else if (i18n('lang:hello') === "Привет!") {
+    //      ozbek = "ru"
+    // }
+
+
+    const [tillar, setTillar] = useState(false);
     const [drop, setDrop] = useState(false);
-    const [til, setTil] = useState(false);
     
   return (
     <div className="bg-white navbar">
@@ -94,48 +96,28 @@ export default function Navbar() {
             </ul>
           </li>
           <li
-            onClick={() => setTil(!til)} className="flex items-center cursor-pointer ml-12 justify-between gap-2"
+            onClick={() => setTillar(!tillar)} className="flex items-center cursor-pointer ml-12 justify-between gap-2"
           >
-            <Image
-              width={20}
-              height={20}
-              src={
-                tillar == "uz"
-                  ? uzb
-                  : ru
-              }
-            ></Image>
-            <p>
-              {tillar == "uz"
-                ? "Uzb"
-                : "Рус"}
-            </p>
-            <Image className="cursor-pointer " src={vector} alt="vector" />
+            <a
+              className="flex cursor-pointer relative items-center justify-between gap-1"
+              href={`${tillar ? "uz" : "ru"}`}
+            >
+              <Image
+                width={20}
+                height={20}
+                src={
+                  tillar
+                    ? uzb
+                    : ru
+                }
+              ></Image>
+              <p>
+                {tillar
+                  ? "Uz"
+                  : "Ru"}
+              </p>
+            </a>
           </li>
-          {til && (
-            <li className="absolute">
-              <ul className="flex w-44 p-7 z-10 flex-col top-2 lef absolute tam  bg-white gap-5">
-                <li onClick={() => setTillar("uz")}>
-                  <a href={"/uz"} onClick={() => setTillar("uz")} className="flex gap-2">
-                    <Image
-                      width={24}
-                      height={24}
-                      src={uzb}></Image>
-                    <p>Uzb</p>
-                  </a>
-                </li>
-                <li onClick={() => setTillar("ru")}>
-                  <a  href={'/ru'} onClick={() => setTillar("ru")}  className="flex gap-2">
-                    <Image
-                      width={26}
-                      height={26}
-                      src={ru}></Image>
-                    <p>Rus</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          )}
           <li>
             <a
               className="flex cursor-pointer relative items-center justify-between gap-1"
